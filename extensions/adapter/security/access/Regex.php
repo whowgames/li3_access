@@ -73,6 +73,7 @@ class Regex extends \lithium\core\Object {
 	 * Each rule is comma-separated and _needs_ a colon as seperator between object
 	 * and property. A preceding ! negates the rule, denying access to that property.
 	 *
+	 * @see http://debuggable.com/posts/33-lines:480f4dd6-639c-44f4-a62a-49a8cbdd56cb
 	 * @param string $object 
 	 * @param string $property 
 	 * @param string $rules 
