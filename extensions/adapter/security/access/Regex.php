@@ -41,6 +41,8 @@ class Regex extends \lithium\core\Object {
 		$current_group = $user[$fields['group']];
 		$current_rules = array_merge($rules['all'], $rules[$current_group]);
 
+		// TODO: check, if params['controller|action'] exist, at all
+
 		$allowed = $this->requestAllowed(
 			$request->params['controller'],
 			$request->params['action'],
