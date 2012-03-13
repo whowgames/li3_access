@@ -130,7 +130,7 @@ class Rules extends \lithium\core\Object {
 				case ($ruleResult === false):
 					return $rule + array_diff_key($options, $defaults);
 				case ($ruleResult !== false && $options['allowAny']):
-					return array();
+					return true;
 			}
 		}
 		return $result;
