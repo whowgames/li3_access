@@ -3,6 +3,7 @@
 namespace li3_access\extensions\adapter\security\access;
 
 use lithium\core\Libraries;
+use lithium\net\http\Router;
 use lithium\util\Set;
 
 class Regex extends \lithium\core\Object {
@@ -42,6 +43,7 @@ class Regex extends \lithium\core\Object {
 		$current_rules = array_merge($rules['all'], $rules[$current_group]);
 
 		// TODO: check, if params['controller|action'] exist, at all
+		$request = Router::process($request);
 
 		$allowed = $this->requestAllowed(
 			$request->params['controller'],
