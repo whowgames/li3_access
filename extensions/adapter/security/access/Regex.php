@@ -42,8 +42,11 @@ class Regex extends \lithium\core\Object {
 		$current_group = $user[$fields['group']];
 		$current_rules = array_merge($rules['all'], $rules[$current_group]);
 
-		// TODO: check, if params['controller|action'] exist, at all
 		$request = Router::process($request);
+		$class_type = basename(str_replace('\\', '/', get_class($request)));
+		if (in_array($class_type, array('Response'))) {
+			return true;
+		}
 
 		$allowed = $this->requestAllowed(
 			$request->params['controller'],
