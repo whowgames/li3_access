@@ -16,7 +16,7 @@ Include the library in in your `/app/config/bootstrap/libraries.php`
 You must configure the adapter you wish to use first, but once you have it configured it's fairly simple to use.
 
     $access = Access::check('access_config_name', Auth::check('auth_config_name'), $this->request);
-    if(!empty($access)) {
+    if (!empty($access)) {
         $this->redirect($access['redirect']);
     }
 
@@ -47,7 +47,7 @@ This adapter effectively allows you to tell it how it should work. It comes with
 Then to deny all requests from the authenticated user.
 
     $access = Access::check('rules', Auth::check('auth_config_name'), $this->request, array('rule' => 'denyAll'));
-    if(!empty($access)) {
+    if (!empty($access)) {
         $this->redirect($access['redirect']);
     }
 

@@ -2,9 +2,6 @@
 
 namespace li3_access\extensions\adapter\security\access;
 
-use lithium\core\Libraries;
-use lithium\util\Set;
-
 class Regex extends \lithium\core\Object {
 
 	/**
@@ -34,7 +31,7 @@ class Regex extends \lithium\core\Object {
 		// $user = $user ?: $this->_config['user']();
 
 		// user is anonymous
-		if(!$user) {
+		if (!$user) {
 			$user = array($fields['group'] => $defaults['group']);
 		}
 
@@ -50,13 +47,13 @@ class Regex extends \lithium\core\Object {
 			$defaults['rule']
 		);
 
-		if($allowed) {
+		if ($allowed) {
 			return true;
 		}
 
 		return array(
 			'message' => $this->_config['message'],
-			'redirect' => $this->_config['redirect'],
+			'redirect' => $this->_config['redirect']
 		);
 	}
 
@@ -76,48 +73,47 @@ class Regex extends \lithium\core\Object {
 	 * and property. A preceding ! negates the rule, denying access to that property.
 	 *
 	 * @see http://debuggable.com/posts/33-lines:480f4dd6-639c-44f4-a62a-49a8cbdd56cb
-	 * @param string $object 
-	 * @param string $property 
-	 * @param string $rules 
-	 * @param string $default 
-	 * @return bool true on allow, false otherwise
+	 * @param string $object
+	 * @param string $property
+	 * @param string $rules
+	 * @param string $default
+	 * @return boolean true on allow, false otherwise
 	 */
 	function requestAllowed($object, $property, $rules, $default = false)
 	{
-		if(is_array($rules)) {
+		if (is_array($rules)) {
 			$rules = implode(',', $rules);
 		}
 
 		// The default value to return if no rule matching $object/$property can be found
 		$allowed = $default;
-	
+
 		// find all rules
 		preg_match_all('/([^:,]+):([^,:]+)/is', $rules, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			list($rawMatch, $allowedObject, $allowedProperty) = $match;
-		
+
 			$allowedObject = str_replace('*', '.*', $allowedObject);
 			$allowedProperty = str_replace('*', '.*', $allowedProperty);
-		
+
 			if (substr($allowedObject, 0, 1) == '!') {
 				$allowedObject = substr($allowedObject, 1);
 				$negativeCondition = true;
 			} else {
 				$negativeCondition = false;
 			}
-		
-			if (preg_match('/^'.$allowedObject.'$/i', $object) &&
-				preg_match('/^'.$allowedProperty.'$/i', $property))
-			{
+
+			$match = (boolean) (preg_match('/^' . $allowedObject . '$/i', $object)
+			                 && preg_match('/^' . $allowedProperty . '$/i', $property));
+
+			if ($match) {
 				$allowed = ($negativeCondition)
 					? false
 					: true;
 			}
-		}		 
+		}
 		return $allowed;
 	}
-
-
 }
 
 ?>
