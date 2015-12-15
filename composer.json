@@ -19,7 +19,7 @@
 		"issues": "https://github.com/bruensicke/li3_access/issues"
 	},
 	"require": {
-		"php": ">=5.3",
+		"php": ">=5.3"
 	},
 	"minimum-stability": "dev"
 }
