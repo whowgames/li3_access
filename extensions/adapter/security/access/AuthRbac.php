@@ -7,7 +7,7 @@ use lithium\core\ConfigException;
 
 use lithium\util\Inflector;
 
-class AuthRbac extends \lithium\core\Object {
+class AuthRbac extends \lithium\core\DynamicObject {
 
 	/**
 	 * @var array $_autoConfig
