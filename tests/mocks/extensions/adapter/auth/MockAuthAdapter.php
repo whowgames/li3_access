@@ -2,7 +2,7 @@
 
 namespace li3_access\tests\mocks\extensions\adapter\auth;
 
-class MockAuthAdapter extends \lithium\core\Object {
+class MockAuthAdapter extends \lithium\core\Li3Object {
 
 	public function check($credentials, array $options = array()) {
         return isset($options['success']) && !empty($credentials->data)

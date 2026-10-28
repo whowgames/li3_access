@@ -4,7 +4,7 @@ namespace li3_access\extensions\adapter\security\access;
 
 use lithium\net\http\Router;
 
-class Regex extends \lithium\core\Object {
+class Regex extends \lithium\core\Li3Object {
 
 	/**
 	 * The `Simple` adapter will just check for user data.
