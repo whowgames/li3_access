@@ -7,11 +7,11 @@ use lithium\core\ConfigException;
 
 use lithium\util\Inflector;
 
-class AuthRbac extends \lithium\core\Object {
+class AuthRbac extends \lithium\core\Li3Object {
 
 	/**
 	 * @var array $_autoConfig
-	 * @see lithium\core\Object::$_autoConfig
+	 * @see lithium\core\Li3Object::$_autoConfig
 	 */
 	protected $_autoConfig = array('roles');
 

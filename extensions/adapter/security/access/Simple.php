@@ -2,7 +2,7 @@
 
 namespace li3_access\extensions\adapter\security\access;
 
-class Simple extends \lithium\core\Object {
+class Simple extends \lithium\core\Li3Object {
 
 	/**
 	 * The `Simple` adapter will just check for user data.
